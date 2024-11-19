@@ -14,7 +14,7 @@ trait DateHelpers{
     }
     
     public function getMonthName(){
-        return $this->format('M');
+        return $this->format('F');
     }
 
     public function getYear(){
@@ -23,6 +23,7 @@ trait DateHelpers{
 }
 
 class CurrentDate extends DateTimeImmutable{
+    
     use DateHelpers;
     public function __construct()
     {
@@ -49,7 +50,7 @@ class calendar{
     protected $calendarDate;
 
     protected $dayLabels = [
-        'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'
+        'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'
     ];
     protected $monthLabels = [
         'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro',
@@ -85,7 +86,8 @@ class calendar{
     }
 
     public function getCalendarMonth(){
-        $this->calendarDate->getMonthName();
+        $monthNumber = $this->calendarDate->getMonthNumber();
+        return $this->monthLabels[$monthNumber - 1];
     }
 
     protected function getMonthFirstDay(){

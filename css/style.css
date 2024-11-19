@@ -1,0 +1,7 @@
+tr:has(td.text-primary){
+    background-color: grey !important;
+}
+tr td{
+    text-align: center;
+    padding: 10px !important;
+}
